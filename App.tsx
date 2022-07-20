@@ -1,12 +1,10 @@
+import { Roboto_400Regular, Roboto_700Bold, useFonts } from "@expo-google-fonts/roboto";
 import { NativeBaseProvider, StatusBar } from "native-base";
-import {
-  useFonts,
-  Roboto_400Regular,
-  Roboto_700Bold,
-} from "@expo-google-fonts/roboto";
+
+import { Loading } from "./src/components/Loading";
+import { Home } from "./src/screens/Home";
 import { SingIn } from "./src/screens/SingnIn";
 import { THEME } from "./src/styles/theme";
-import { Loading } from "./src/components/Loading";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -21,7 +19,8 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      {fontsLoaded ? <SingIn /> : <Loading />}
+      {fontsLoaded ? <Home /> : <Loading />}
+      {/*  If ternario para verificar se as fontes foram carregadas */}
     </NativeBaseProvider>
   );
 }
