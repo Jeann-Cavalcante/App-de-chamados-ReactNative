@@ -2,6 +2,7 @@ import { Roboto_400Regular, Roboto_700Bold, useFonts } from "@expo-google-fonts/
 import { NativeBaseProvider, StatusBar } from "native-base";
 
 import { Loading } from "./src/components/Loading";
+import { Details } from "./src/screens/Details";
 import { Home } from "./src/screens/Home";
 import { Register } from "./src/screens/Register";
 import { SingIn } from "./src/screens/SingnIn";
@@ -20,7 +21,7 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      {fontsLoaded ? <Register /> : <Loading />}
+      {fontsLoaded ? <Details /> : <Loading />}
       {/*  If ternario para verificar se as fontes foram carregadas */}
     </NativeBaseProvider>
   );
