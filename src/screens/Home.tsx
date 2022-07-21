@@ -1,9 +1,25 @@
-import { Heading, HStack, IconButton, Text, useTheme, VStack } from "native-base";
-import { SignOut } from "phosphor-react-native";
+import { Center, FlatList, Heading, HStack, IconButton, Text, useTheme, VStack } from "native-base";
+import { ChatTeardropText, SignOut } from "phosphor-react-native";
+import { useState } from "react";
 
 import Logo from "../assets/logo_secondary.svg";
+import { Button } from "../components/Button";
+import { Filter } from "../components/Filter";
+import { Order, OrderProps } from "../components/Orders";
 
 export function Home() {
+  const [statusSelected, setStatusSelected] = useState<"open" | "closed">(
+    "open"
+  );
+
+  const [orders, setOrders] = useState<OrderProps[]>([
+    {
+      id: "1",
+      patrimony: "123456789",
+      when: "20/07/2022 às 10:00",
+      status: "open",
+    },
+  ]);
   const { colors } = useTheme();
   return (
     <VStack flex={1} pb={6} bg="gray.700">
@@ -32,6 +48,35 @@ export function Home() {
           <Heading color="gray.100">Meus chamados</Heading>
           <Text color="gray.200">3</Text>
         </HStack>
+
+        <HStack space={3} mb={8}>
+          <Filter
+            type="open"
+            title="Em andamento"
+            onPress={() => setStatusSelected("open")}
+            isActive={statusSelected === "open"}
+          />
+          <Filter
+            type="closed"
+            title="Finalizados"
+            onPress={() => setStatusSelected("closed")}
+            isActive={statusSelected === "closed"}
+          />
+        </HStack>
+        <FlatList
+          data={orders}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => <Order data={item} />}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{ paddingBottom: 80 }}
+          ListEmptyComponent={() => (
+            <Center>
+              <ChatTeardropText color={colors.gray[300]} size={40} />
+            </Center>
+          )}
+        />
+
+        <Button title="Novo chamado" />
       </VStack>
     </VStack>
   );

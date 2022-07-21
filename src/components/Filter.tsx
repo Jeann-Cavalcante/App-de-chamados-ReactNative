@@ -3,8 +3,28 @@ import { Button, IButtonProps, Text, useTheme, VStack } from "native-base";
 type Props = IButtonProps & {
   title: string;
   isActive?: boolean;
-  type: "open" | "close";
+  type: "open" | "closed";
 };
 export function Filter({ title, isActive = false, type, ...rest }: Props) {
-  return <VStack></VStack>;
+  const { colors } = useTheme();
+
+  const colorType = type === "open" ? colors.secondary[700] : colors.green[300];
+  return (
+    <Button
+      variant="outline"
+      borderWidth={isActive ? 1 : 0}
+      borderColor={colorType}
+      bgColor="gray.600"
+      flex={1}
+      {...rest}
+    >
+      <Text
+        color={isActive ? colorType : "gray.300"}
+        fontSize="xs"
+        textTransform="uppercase"
+      >
+        {title}
+      </Text>
+    </Button>
+  );
 }
