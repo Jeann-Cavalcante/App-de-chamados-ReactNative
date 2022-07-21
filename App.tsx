@@ -3,6 +3,7 @@ import { NativeBaseProvider, StatusBar } from "native-base";
 
 import { Loading } from "./src/components/Loading";
 import { Home } from "./src/screens/Home";
+import { Register } from "./src/screens/Register";
 import { SingIn } from "./src/screens/SingnIn";
 import { THEME } from "./src/styles/theme";
 
@@ -19,7 +20,7 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      {fontsLoaded ? <Home /> : <Loading />}
+      {fontsLoaded ? <Register /> : <Loading />}
       {/*  If ternario para verificar se as fontes foram carregadas */}
     </NativeBaseProvider>
   );

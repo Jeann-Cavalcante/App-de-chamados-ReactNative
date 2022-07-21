@@ -72,6 +72,11 @@ export function Home() {
           ListEmptyComponent={() => (
             <Center>
               <ChatTeardropText color={colors.gray[300]} size={40} />
+              <Text color="gray.300" fontSize="xl" mt={6} textAlign="center">
+                Você ainda não possui {"\n"}
+                nenhum chamado
+                {statusSelected === "open" ? "aberto" : "finalizado"}.
+              </Text>
             </Center>
           )}
         />
