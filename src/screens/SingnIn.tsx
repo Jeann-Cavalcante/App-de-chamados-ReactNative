@@ -1,17 +1,24 @@
+// import auth from "@react-native-firebase/auth";
 import { Heading, Icon, useTheme, VStack } from "native-base";
 import { Envelope, Key } from "phosphor-react-native";
 import { useState } from "react";
+import { Alert } from "react-native";
 
 import Logo from "../assets/logo_primary.svg";
 import { Button } from "../components/Button";
 import { Input } from "../components/Input";
 
 export function SingIn() {
+  const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   function handleName() {
-    email;
+    if (!email || !password) {
+      Alert.alert("Error", "Login invalido");
+      return;
+    }
+    setIsLoading(true);
   }
 
   const { colors } = useTheme(); //hook para usar thema
@@ -37,7 +44,13 @@ export function SingIn() {
         onChangeText={setPassword}
       />
 
-      <Button title="Entrar" mt={6} w="100%" onPress={handleName} />
+      <Button
+        title="Entrar"
+        mt={6}
+        w="100%"
+        onPress={handleName}
+        isLoading={isLoading}
+      />
     </VStack>
   );
 }

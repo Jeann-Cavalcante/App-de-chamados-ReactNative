@@ -3,8 +3,15 @@
     "name": "helps",
     "slug": "helps",
     "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "assetBundlePatterns": ["**/*"],
+    "plugins": ["@react-native-firebase/app"],
+    "android": {
+      "package": "com.helps",
+      "googleServicesFile": "./google-services.json"
+    },
+    "ios": {
+      "bundleIdentifier": "com.helps",
+      "googleServicesFile": "./GoogleService-Info.plist"
+    }
   }
 }

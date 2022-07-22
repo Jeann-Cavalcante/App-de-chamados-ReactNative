@@ -24,10 +24,10 @@ export function Header({ title, ...rest }: Props) {
       pb={6}
       pt={12}
     >
-      
-        <IconButton icon={<CaretLeft color={colors.gray[200]} size={24} />}
-        onPress={handleBack} />
-     
+      <IconButton
+        icon={<CaretLeft color={colors.gray[200]} size={24} />}
+        onPress={handleBack}
+      />
 
       <Heading
         color="gray.100"
